@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Edit Department')
+@section('title', 'Edit Medicine')
 @section('content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -7,13 +7,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Edit Department</h1>
+          <h1>Edit Medicine</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{route('department.index')}}">View Department</a></li>
-            <li class="breadcrumb-item active">Edit Department</li>
+            <li class="breadcrumb-item"><a href="{{route('department.index')}}">View Medicine</a></li>
+            <li class="breadcrumb-item active">Edit Medicine</li>
           </ol>
         </div>
       </div>
@@ -33,24 +33,20 @@
             @endif
 
             <!-- form start -->
-            <form method="post" action="{{route('department.update', $data->id)}}">
+            <form method="post" action="{{route('medicine.update', $data->id)}}">
               @csrf
               @method('PUT')
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Department Name</label>
+                  <label for="exampleInputEmail1">Medicine Name</label>
                   <input type="text" name="name" class="form-control form-control-border" id="exampleInputEmail1" value="{{$data->name}}">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Description</label>
-                  <input type="text" name="description" class="form-control form-control-border" id="exampleInputPassword1" value="{{$data->description}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Status</label>
                   <select name="status" class="form-control form-control-border">
                     <option value="" selected disabled>Select Status</option>
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
+                    <option value="1" @selected($data->status == 1)>Active</option>
+                    <option value="0" @selected($data->status == 0)>Inactive</option>
                   </select>
                 </div>
               </div>

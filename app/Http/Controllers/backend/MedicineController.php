@@ -42,7 +42,7 @@ class MedicineController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(medicine $medicine)
+    public function show(Medicine $medicine)
     {
         //
     }
@@ -50,23 +50,24 @@ class MedicineController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(medicine $medicine)
+    public function edit(Medicine $medicine)
     {
-        //
+        return view('backend.medicine.edit', ['data' => $medicine]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, medicine $medicine)
+    public function update(Request $request, Medicine $medicine)
     {
-        //
+        $medicine->update($request->all());
+        return redirect()->route('medicine.index')->with('msg', 'Successfully Updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(medicine $medicine)
+    public function destroy(Medicine $medicine)
     {
         $medicine->delete();
         return redirect()->route('medicine.index')->with('msg', 'Deleted Successfully');
