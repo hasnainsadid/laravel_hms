@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class MedicineController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data['admins'] = Admin::all();
-        return view('backend.admin.index', $data);
+        $data['medicines'] = Medicine::all();
+        return view('backend.medicine.index', $data);
     }
 
     /**
@@ -22,7 +22,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.create');
+        return view('backend.medicine.create');
     }
 
     /**
@@ -30,15 +30,19 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        
-        Admin::create($request->all());
-        return redirect()->route('admin_info.index')->with('msg', 'Admin Added Successfully');
+        $validate = $request->validate([
+            'name' => 'required'
+        ]);
+        if ($validate) {
+            Medicine::create($request->all());
+            return redirect()->back()->with('msg', 'Successfully Inserted');
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Admin $admin)
+    public function show(medicine $medicine)
     {
         //
     }
@@ -46,7 +50,7 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Admin $admin)
+    public function edit(medicine $medicine)
     {
         //
     }
@@ -54,7 +58,7 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, medicine $medicine)
     {
         //
     }
@@ -62,8 +66,9 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Admin $admin)
+    public function destroy(medicine $medicine)
     {
-        //
+        $medicine->delete();
+        return redirect()->route('medicine.index')->with('msg', 'Deleted Successfully');
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\AppointmentController;
 use App\Http\Controllers\backend\Dashboard;
 use App\Http\Controllers\backend\DepartmentController;
 use App\Http\Controllers\backend\DoctorController;
+use App\Http\Controllers\backend\MedicineController;
 use App\Http\Controllers\backend\PatientController;
 use App\Http\Controllers\backend\TreatmentController;
 use Illuminate\Support\Facades\Route;
@@ -25,10 +26,14 @@ Route::get('/', function () {
 });
 Route::get('/admin', [Dashboard::class, 'index']);
 
+// admin //
+Route::resource('admin_info', AdminController::class);
+
 // appointment //
 Route::resource('appointment', AppointmentController::class);
 Route::get('pending_appointment', [AppointmentController::class, 'pending'])->name('appointment.pending');
 Route::get('approved_appointment', [AppointmentController::class, 'approved'])->name('appointment.approved');
+Route::post('confirmed_appointment/{id}', [AppointmentController::class, 'confirmed'])->name('appointment.confirm');
 
 // doctor //
 Route::resource('doctor', DoctorController::class);
@@ -42,5 +47,5 @@ Route::resource('patient', PatientController::class);
 // tretment //
 Route::resource('treatment', TreatmentController::class);
 
-// admin //
-Route::resource('admin_info', AdminController::class);
+// Mediciine //
+Route::resource('medicine', MedicineController::class);

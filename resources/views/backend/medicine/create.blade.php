@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Add Admin')
+@section('title', 'Add New Medicine')
 @section('content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -7,16 +7,17 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Add Admin</h1>
+          <h1>Add Medicine</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-            <li class="breadcrumb-item active">Add Admin</li>
+            <li class="breadcrumb-item"><a href="{{route('medicine.index')}}">View Medicine</a></li>
+            <li class="breadcrumb-item active">Add Medicine</li>
           </ol>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
 
   <!-- Main content -->
@@ -26,38 +27,27 @@
         <div class="col-md-12">
           <!-- general form elements -->
           <div class="card card-primary">
+
+            {{-- Session Message --}}
+            @if (session('msg'))
+              <div class="alert alert-success">{{session('msg')}}</div>
+            @endif
+
             <!-- form start -->
-            <form action="{{route('admin_info.store')}}" method="POST" enctype="multipart/form-data">
+            <form method="post" action="{{route('medicine.store')}}">
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Admin Name</label>
+                  <label for="exampleInputEmail1">Medicine Name</label>
                   <input type="text" name="name" class="form-control form-control-border" id="exampleInputEmail1">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Email</label>
-                  <input type="email" name="email" class="form-control form-control-border" id="exampleInputPassword1">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Password</label>
-                  <input type="password" name="password" class="form-control form-control-border" id="exampleInputEmail1">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Confirm Password</label>
-                  <input type="password" name="confirmation_password" class="form-control form-control-border" id="exampleInputEmail1">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Profile Image</label>
-                  <input type="file" name="img" class="form-control form-control-border" id="exampleInputEmail1">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Status</label>
                   <select name="status" class="form-control form-control-border">
-                    <option selected disabled>Select Status</option>
+                    <option value="" selected disabled>Select Status</option>
                     <option value="1">Active</option>
                     <option value="0">Inactive</option>
                   </select>
-                  <!-- <input type="text" name="status" id="exampleInputPassword1"> -->
                 </div>
               </div>
               <div class="card-footer">

@@ -64,7 +64,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="add_admin.php" class="nav-link">
+              <a href="{{route('admin_info.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Add Admin</p>
               </a>
@@ -169,6 +169,58 @@
         </li>
         <!-- /Patients -->
 
+        <!-- Billing -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-file-invoice"></i>
+            <p>
+              Billing
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('patient.create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Billing</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('patient.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View All Billing</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- /Billing -->
+
+        <!-- Prescription -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-prescription"></i>
+            <p>
+              Prescription
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('patient.create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Billing</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('patient.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View Prescription</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- /Prescription -->
+
         <!-- Services -->
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -204,24 +256,24 @@
                 <p>View Treatment Type</p>
               </a>
             </li>
-            <!-- <li class="nav-item">
-              <a href="pages/tables/jsgrid.html" class="nav-link">
+            <li class="nav-item">
+              <a href="{{route('medicine.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Add Medicine</p>
               </a>
-            </li> -->
-            <!-- <li class="nav-item">
-              <a href="pages/tables/jsgrid.html" class="nav-link">
+            </li>
+            <li class="nav-item">
+              <a href="{{route('medicine.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>View Medicine</p>
               </a>
-            </li> -->
+            </li>
           </ul>
         </li>
         <!-- /Services -->
 
         <!-- logout -->
-        <li class="nav-item">
+        <li class="nav-item mb-5">
           <a href="./includes/logout.php" class="nav-link">
             <i class=" nav-icon fas fa-sign-out-alt"></i>
             <p>Logout</p>

@@ -50,12 +50,12 @@
                     <td>{{$item->reason}}</td>
                     <td>{{$item->status == 1 ? 'Approved' : 'Pending'}}</td>
                     <td>
-                      <form action="{{route('appointment.confirm', $item->id)}}" method="post">
+                      <form action="{{route('appointment.confirm', $item->id)}}" method="post" class="d-inline">
                         @csrf
                         {{-- @method('post') --}}
-                        <button class="btn btn-info">Confirmed</button>
+                        <button type="submit" class="btn btn-info">Confirmed</button>
                       </form>
-                      <form action="{{route('appointment.destroy', $item->id)}}" method="POST">
+                      <form action="{{route('appointment.destroy', $item->id)}}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

@@ -84,6 +84,7 @@ class AppointmentController extends Controller
     {
         $data = Appointment::find($id);
         $data->status = 1;
+        $data->update();
         return redirect()->back();
     }
 }
