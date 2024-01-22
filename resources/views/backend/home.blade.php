@@ -84,7 +84,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Available Seat</span>
-                <span class="info-box-number">24 out of 50</span>
+                <span class="info-box-number">4 out of {{$seat}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>

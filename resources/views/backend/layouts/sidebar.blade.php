@@ -169,6 +169,32 @@
         </li>
         <!-- /Patients -->
 
+        <!-- Seats -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-bed"></i>
+            <p>
+              Seats
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('seat.create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add New Seat</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('seat.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Total Seats</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- /Seats -->
+
         <!-- Billing -->
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -195,6 +221,32 @@
         </li>
         <!-- /Billing -->
 
+        <!-- Admission -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-file-invoice"></i>
+            <p>
+              Admission
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            {{-- <li class="nav-item">
+              <a href="{{route('patient.create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Billing</p>
+              </a>
+            </li> --}}
+            <li class="nav-item">
+              <a href="{{route('admission.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View Admissions</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- /Admission -->
+
         <!-- Prescription -->
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -205,12 +257,6 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{route('patient.create')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Add Billing</p>
-              </a>
-            </li>
             <li class="nav-item">
               <a href="{{route('patient.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>

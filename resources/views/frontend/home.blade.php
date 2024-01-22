@@ -178,12 +178,14 @@
     <h1 class="text-center wow fadeInUp">Get in Touch</h1>
     <p class="text-center wow fadeInDown">Feel free to contact with us</p>
     
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong>{{session('msg')}}</strong>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+    @if (session('msg'))
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{session('msg')}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    @endif
 
     <form class="contact-form mt-5" method="POST" action="#">
       @csrf

@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'All Patients')
+@section('title', 'All Seats')
 @section('content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>View Patients</h1>
+          <h1>View Seats</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-            <li class="breadcrumb-item active">View Patients</li>
+            <li class="breadcrumb-item active">View Seats</li>
           </ol>
         </div>
       </div>
@@ -28,42 +28,32 @@
             <div class="card-body">
               <table id="example2" class="table table-bordered table-hover text-center">
                 @if (session('msg'))
-                  <div class="alert alert-success">{{session('msg')}}</div>
+                <div class="alert alert-success">{{session('msg')}}</div>
                 @endif
                 <thead>
                   <tr>
-                    <th>Sl No</th>
-                    <th>Patients's Name</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Gender</th>
-                    <th>Blood Group</th>
-                    <th>Type</th>
+                    <th style="width: 1.3rem;">Sl No</th>
+                    <th>Seat Title</th>
+                    <th>Cost</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   @php($i = 1)
-                  @foreach ($patients as $item)
-                  @php($admit = $admission->where('p_id', $item->id)->where('release_date', NULL)->first())
+                  @foreach ($seat as $item)
+                  @php($admit = $admission->where('seat_id', $item->id)->where('release_date', NULL)->first())
                   <tr>
                     <td style="width: 1.3rem;">{{$i++}}</td>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->address}}</td>
-                    <td>{{$item->phone}}</td>
-                    <td>{{$item->gender}}</td>
-                    <td>{{$item->blood_grp}}</td>
-                    <td>{{$admit ? 'Indoor' : 'Outdoor'}}</td>
+                    <td style="background-color: {{$admit ? '#A52A2A' : '#00ff00'}}; opacity: 0.8; color: black">{{$item->name}}</td>
+                    <td>{{$item->cost}}</td>
+                    <td style="background-color: {{$admit ? '#A52A2A' : '#00ff00'}}; opacity: 0.8; color: black">{{$admit ? 'Booked' : 'Available'}}</td>
                     <td>
-                      <a href="{{route('patient.edit', $item->id)}}" class="btn btn-info">Edit</a>
-                      @if (!$admit)
-                        <a href="{{route('admission.create')}}" class="btn btn-success">Admit</a>
-                      @endif
-
-                      <form action="{{route('patient.destroy', $item->id)}}" method="post" class="d-inline">
+                      <a href="{{route('seat.edit', $item->id)}}" class="btn btn-info">Edit</a> 
+                      <form action="{{route('seat.destroy', $item->id)}}" method="post" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger">Delete</button>
                       </form>
                     </td>
                   </tr>

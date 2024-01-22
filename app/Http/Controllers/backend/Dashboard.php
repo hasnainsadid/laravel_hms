@@ -8,6 +8,7 @@ use App\Models\Appointment;
 use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Seat;
 use Illuminate\Http\Request;
 
 class Dashboard extends Controller
@@ -20,6 +21,7 @@ class Dashboard extends Controller
         $data['appointment'] = Appointment::count();
         $data['department'] = Department::count();
         $data['admin'] = Admin::count();
+        $data['seat'] = Seat::count();
         return view('backend.home', $data);
     }
 }

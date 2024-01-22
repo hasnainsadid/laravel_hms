@@ -16,4 +16,8 @@ class Patient extends Model
     {
         return $this->hasMany(Appointment::class);
     }
+    public function admission(): HasMany
+    {
+        return $this->hasMany(Admission::class);
+    }
 }

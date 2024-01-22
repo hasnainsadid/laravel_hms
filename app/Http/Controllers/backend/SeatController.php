@@ -4,21 +4,19 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admission;
-use App\Models\Doctor;
-use App\Models\Patient;
-use App\Models\Treatment;
+use App\Models\Seat;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class SeatController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data['patients'] = Patient::all();
+        $data['seat'] = Seat::all();
         $data['admission'] = Admission::all();
-        return view('backend.patient.index', $data);
+        return view('backend.seat.index', $data);
     }
 
     /**
@@ -26,9 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        $data['doctor'] = Doctor::all();
-        $data['treatment'] = Treatment::all();
-        return view('backend.patient.create', $data);
+        return view('backend.seat.create');
     }
 
     /**
@@ -36,14 +32,14 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        Patient::create($request->all());
+        Seat::create($request->all());
         return redirect()->back()->with('msg', 'Successfully Inserted');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Patient $patient)
+    public function show(Seat $seat)
     {
         //
     }
@@ -51,26 +47,26 @@ class PatientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Patient $patient)
+    public function edit(Seat $seat)
     {
-        return view('backend.patient.edit', ['data' => $patient]);
+        return view('backend.seat.edit', ['data' => $seat]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Seat $seat)
     {
-        $patient->update($request->all());
-        return redirect()->route('patient.index')->with('msg', 'Successfully Updated.');
+        $seat->update($request->all());
+        return redirect()->route('seat.index')->with('msg', 'Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Patient $patient)
+    public function destroy(Seat $seat)
     {
-        $patient->delete();
-        return redirect()->route('patient.index')->with('msg', 'Deleted Successfully');
+        $seat->delete();
+        return redirect()->back()->with('msg', 'Deleted Successfully');
     }
 }
