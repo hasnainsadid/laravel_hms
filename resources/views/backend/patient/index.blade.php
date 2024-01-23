@@ -56,8 +56,13 @@
                     <td>{{$admit ? 'Indoor' : 'Outdoor'}}</td>
                     <td>
                       <a href="{{route('patient.edit', $item->id)}}" class="btn btn-info">Edit</a>
+
                       @if (!$admit)
-                        <a href="{{route('admission.create')}}" class="btn btn-success">Admit</a>
+                        <form action="{{route('admission.admit_form')}}" method="post" class="d-inline">
+                          @csrf
+                          <input type="hidden" name="p_id" value="{{$item->id}}">
+                          <button type="submit" class="btn btn-success">Admit</button>
+                        </form>
                       @endif
 
                       <form action="{{route('patient.destroy', $item->id)}}" method="post" class="d-inline">

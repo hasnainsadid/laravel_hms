@@ -24,25 +24,15 @@ class AdmissionController extends Controller
      */
     public function create()
     {
-        $seat = Seat::all();
-        return view('backend.admission.create', compact('seat'));
+        
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Patient $patient)
+    public function store(Request $request)
     {
-        // $admission = new Admission();
         
-        // $data = [
-        //     'p_id' => $patient->id,
-        //     'seat_id' => $request->seat_id
-        // ];
-        // dd($data);
-        // $admission->create($data);
-
-        // return redirect()->route('admission.index')->with('msg', 'Admitted Successfully');
     }
 
     /**
@@ -83,5 +73,26 @@ class AdmissionController extends Controller
         $data->release_date = now();
         $data->update();
         return redirect()->back();
+    }
+
+    public function admit_form(Request $request)
+    {
+        $p_id = $request->p_id;
+        $seat = Seat::all();
+        return view('backend.admission.create', compact('seat', 'p_id'));
+    }
+
+    public function admit(Request $request)
+    {
+        $admission = new Admission();
+        
+        $data = [
+            'p_id' => $request->p_id,
+            'seat_id' => $request->seat_id
+        ];
+        // dd($data);
+        $admission->create($data);
+
+        return redirect()->route('admission.index')->with('msg', 'Admitted Successfully');
     }
 }

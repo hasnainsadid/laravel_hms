@@ -58,3 +58,6 @@ Route::resource('seat', SeatController::class);
 // Admission //
 Route::resource('admission', AdmissionController::class);
 Route::post('admission/release/{id}', [AdmissionController::class, 'release'])->name('admission.release');
+Route::post('admission/admit_form', [AdmissionController::class, 'admit_form'])->name('admission.admit_form');
+
+Route::post('admission/admit', [AdmissionController::class, 'admit'])->name('admission.admit');

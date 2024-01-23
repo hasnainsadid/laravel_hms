@@ -34,10 +34,11 @@
             @endif
 
             <!-- form start -->
-            <form method="post" action="{{route('admission.store')}}">
+            <form method="post" action="{{route('admission.admit')}}">
               @csrf
               <div class="card-body">
                 <div class="form-group">
+                  <input type="hidden" name="p_id" value="{{$p_id}}" ><br>
                   <label for="exampleInputEmail1">Seat Title</label>
                   <select name="seat_id" class="form-control">
                     <option selected disabled>Select Seat</option>
