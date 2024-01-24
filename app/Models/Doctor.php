@@ -11,7 +11,7 @@ class Doctor extends Model
 {
     use HasFactory;
 
-    protected $table = 'doctors';
+    protected $table = 'doctor';
     protected $fillable = ['name', 'designation', 'email', 'password', 'phone', 'status', 'd_id'];
 
     public function appointment() : HasMany {

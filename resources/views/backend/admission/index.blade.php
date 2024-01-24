@@ -50,10 +50,14 @@
                     <td>{{$item->admission_date}}</td>
                     <td>{{$item->release_date == NULL ? 'Admitted Yet' : $item->release_date}}</td>
                     <td>
+                      @if ($item->release_date == NULL)
                       <form action="{{route('admission.release', $item->id)}}" method="POST">
                         @csrf
                         <button class="btn btn-success"> Release </button>
                       </form>
+                      @else
+                          <button class="btn bg-cyan" disabled>Released</button>
+                      @endif
                     </td>
                   </tr>
                   @endforeach
