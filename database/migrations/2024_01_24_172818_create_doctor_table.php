@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('img')->nullable()->default(NULL);
             $table->tinyInteger('status');
+            $table->tinyInteger('d_id');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
