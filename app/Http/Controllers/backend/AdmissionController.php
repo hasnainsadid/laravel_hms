@@ -88,7 +88,8 @@ class AdmissionController extends Controller
         
         $data = [
             'p_id' => $request->p_id,
-            'seat_id' => $request->seat_id
+            'seat_id' => $request->seat_id,
+            'admission_date' => $request->admission_date
         ];
         // dd($data);
         $admission->create($data);

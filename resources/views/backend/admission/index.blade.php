@@ -48,7 +48,7 @@
                     <td>{{$item->patient->name}}</td>
                     <td>{{$item->seat->name}}</td>
                     <td>{{$item->admission_date}}</td>
-                    <td>{{$item->release_date == NULL ? 'Admitted Yet' : $item->release_date}}</td>
+                    <td>{{$item->release_date == NULL ? '-' : $item->release_date}}</td>
                     <td>
                       @if ($item->release_date == NULL)
                       <form action="{{route('admission.release', $item->id)}}" method="POST">

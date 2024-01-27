@@ -52,7 +52,7 @@
                     <td>{{$item->department->name}}</td>
                     <td>{{$item->email}}</td>
                     <td>{{$item->phone}}</td>
-                    <td>{{$item->status == 1 ? 'Active' : 'Inactive'}}</td>
+                    <td>{{$item->status == 1 ? 'Active' : 'Inact+ive'}}</td>
                     <td>
                       <a href="{{route('doctor.edit', $item->id)}}" class="btn btn-info">Edit</a>
                       <form action="{{route('doctor.destroy', $item->id)}}" method="post" class="d-inline">

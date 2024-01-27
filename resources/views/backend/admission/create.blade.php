@@ -47,6 +47,9 @@
                     @endforeach
                   </select>
                 </div>
+                  <label for="exampleInputEmail1">Admission Date</label>
+                  <input type="date" name="admission_date" class="form-control">
+                </div>
                 {{-- <div class="form-group">
                   <label for="exampleInputPassword1">Status</label>
                   <select name="status" class="form-control form-control-border">

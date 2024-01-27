@@ -10,7 +10,7 @@ class Admission extends Model
 {
     use HasFactory;
     protected $table = 'admission';
-    protected $fillable = ['p_id', 'seat_id', 'release_date'];
+    protected $fillable = ['p_id', 'seat_id', 'admission_date', 'release_date'];
 
     public function seat(): BelongsTo {
         return $this->belongsTo(Seat::class, 'seat_id');
